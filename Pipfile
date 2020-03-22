@@ -1,0 +1,15 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
+
+[dev-packages]
+
+[packages]
+psycopg2-binary = "*"
+factom-api = {editable = true,git = "https://github.com/FactomProject/factom-api.git",ref = "master"}
+py-factom-did = {editable = true,git = "https://github.com/stackdump/py-factom-did.git",ref = "66344e070899ea48d365f8f56561d055e8a21d6a"}
+ptflow = {editable = true,git = "https://github.com/stackdump/ptflow.git"}
+
+[requires]
+python_version = "3.7"

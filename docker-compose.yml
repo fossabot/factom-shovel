@@ -1,0 +1,75 @@
+version: "3.7"
+services:
+  walletd:
+    container_name: walletd
+    image: factominc/factom-walletd:latest
+    depends_on:
+      - factomd
+    expose:
+      - "8089"
+    ports:
+      - "8089:8089"
+    volumes: []
+    #- ./factom-data:/root/.factom/:rw
+    command: -s=factomd:8088
+    networks:
+      pnet: {}
+  factomd:
+    container_name: factomd
+    image: factominc/factomd:v6.6.0
+    depends_on:
+      - shovel
+    expose:
+      - "8088"
+      - "8110"
+      - "8090"
+      - "9876"
+    ports:
+      - "8088:8088"
+      - "8110:8110"
+      - "8090:8090"
+      - "9876:9876"
+    volumes: []
+    #- ./factom-data:/root/.factom/:rw
+    command: --blktime=15 --network=LOCAL --enablelivefeedapi --eventformat=json
+    networks:
+      pnet: {}
+#shovel:
+#  image: stackdump/factom-shovel:latest
+#  build:
+#    context: .
+#    dockerfile: ./Dockerfile
+#  hostname: shovel
+#  ports:
+#    - "8040:8040"
+#  networks:
+#    pnet: {}
+#  environment:
+#    POSTGRES_USER: pflow
+#    POSTGRES_PASSWORD: pflow
+#    POSTGRES_DB: pflow
+#    PYTHONDEBUG: 1
+#    FACTOMD_ENDPOINT: http://factomd:8088
+  pgsql:
+    image: postgres:11
+    depends_on:
+      - factomd
+      - walletd
+    hostname: pgsql
+    ports:
+      - "5432:5432"
+    networks:
+      pnet: {}
+    environment:
+      POSTGRES_USER: pflow
+      POSTGRES_PASSWORD: pflow
+      POSTGRES_DB: pflow
+      PYTHONDEBUG: 1
+      FACTOMD_ENDPOINT: http://factomd:8088
+
+networks:
+    pnet:
+      ipam:
+        driver: default
+        config:
+          - subnet: 10.9.0.0/16

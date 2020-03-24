@@ -1,4 +1,5 @@
 import time
+import uuid
 import unittest
 import factom 
 
@@ -37,14 +38,14 @@ class TestSim(unittest.TestCase):
         self.assertEqual(rate, 1000)
         print(r)
 
-        # FIXME: somehow the FCT in the default address isn't spendable via the wallet
         r = self.f.factoid_balance(self.f.fct_address)
         print(r)
 
-        #r = self.w.fct_to_ec(self.f, 50 * rate, fct_address=self.f.fct_address, ec_address=self.f.ec_address)
-        #self.assertEqual(r['message'], 'Successfully submitted the transaction')
+        r = self.w.fct_to_ec(self.f, 50 * rate, fct_address=self.f.fct_address, ec_address=self.f.ec_address)
+        self.assertEqual(r['message'], 'Successfully submitted the transaction')
 
-        r = self.w.new_chain(self.f, [b'random', b'chain', b'id'], b'chain_content', ec_address=self.f.ec_address)
+        ident = uuid.uuid4()
+        r = self.w.new_chain(self.f, [ident.bytes, b'chain', b'id'], b'chain_content', ec_address=self.f.ec_address)
         print(r)
 
 

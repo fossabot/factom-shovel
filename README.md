@@ -26,9 +26,31 @@ Paying for entry storage on the Factom Protocol is a price-fixed at $0.001 per-k
 Using this basic mechanism to provide permanance and anchoring to IPFS based services
 extends the reach and utility of the Factom Protocol.
 
+## Development
+
+For integration testing it is convenient not to use docker containers.
+
+The provided `Procfile` starts a local network.
+
+```
+factomd: ./factomd --network=LOCAL --enablelivefeedapi --eventformat=json
+shovel: python ./shovel/listener.py
+wallet: ./factom-walletd
+generator: watch -n 1 python test_write.py
+```
+
+Honcho is a python package that makes use of Procfile format
+It shows joined logs from all services with color-coded output.
+
+```
+honcho start
+```
 
 ### Notes
 
 * Investigate possible filesystem level integration
   * https://github.com/hanwen/go-fuse
   * https://docs.ipfs.io/reference/api/cli/#ipfs-add
+
+* what are other good targets to shovel data?
+  * RabbitMQ, kafka

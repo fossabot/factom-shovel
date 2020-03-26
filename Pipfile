@@ -10,7 +10,9 @@ honcho = "*"
 psycopg2-binary = "*"
 factom-api = {editable = true,git = "https://github.com/FactomProject/factom-api.git",ref = "master"}
 py-factom-did = {editable = true,git = "https://github.com/stackdump/py-factom-did.git",ref = "66344e070899ea48d365f8f56561d055e8a21d6a"}
+factom-sim = {editable = true,git = "https://github.com/stackdump/factom-sim.git",ref = "master"}
 ptflow = {editable = true,git = "https://github.com/stackdump/ptflow.git"}
+ipfshttpclient = "*"
 
 [requires]
 python_version = "3.7"

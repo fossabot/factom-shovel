@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "6170ba209c041b79d28fe1d3713923f8a982d04762535fbe5b848f3584a16192"
+            "sha256": "ae037d1ca90b65fac7047f09e23a76ebee1267c8d64fba391755638c035c3f4b"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -55,12 +55,39 @@
             "git": "https://github.com/FactomProject/factom-api.git",
             "ref": "1dcb31c5b80b5bf23b551a004cf0915fec96a133"
         },
+        "factom-sim": {
+            "editable": true,
+            "git": "https://github.com/stackdump/factom-sim.git",
+            "ref": "a27d861ba6dc06760bbae075a0093bda243268d3"
+        },
         "idna": {
             "hashes": [
                 "sha256:7588d1c14ae4c77d74036e8c22ff447b26d0fde8f007354fd48a7814db15b7cb",
                 "sha256:a068a21ceac8a4d63dbfd964670474107f541babbd2250d61922f029858365fa"
             ],
             "version": "==2.9"
+        },
+        "ipfshttpclient": {
+            "hashes": [
+                "sha256:0a199a1005fe44bff9da28b5af4785b0b09ca700baac9d1e26718fe23fe89bb7",
+                "sha256:bee95c500edf669bb8a984d5588fc133fda9ec67845c5688bcbbea030a03f10f"
+            ],
+            "index": "pypi",
+            "version": "==0.4.12"
+        },
+        "multiaddr": {
+            "hashes": [
+                "sha256:30b2695189edc3d5b90f1c303abb8f02d963a3a4edf2e7178b975eb417ab0ecf",
+                "sha256:5c0f862cbcf19aada2a899f80ef896ddb2e85614e0c8f04dd287c06c69dac95b"
+            ],
+            "version": "==0.0.9"
+        },
+        "netaddr": {
+            "hashes": [
+                "sha256:38aeec7cdd035081d3a4c306394b19d677623bf76fa0913f6695127c7753aefd",
+                "sha256:56b3558bd71f3f6999e4c52e349f38660e54a7a8a9943335f73dfc96883e08ca"
+            ],
+            "version": "==0.7.19"
         },
         "psycopg2-binary": {
             "hashes": [
@@ -165,6 +192,12 @@
                 "sha256:87716c2d2a7121198ebcb7ce7cccf6ce5e9ba539041cfbaeecfb641dc0bf6acc"
             ],
             "version": "==1.25.8"
+        },
+        "varint": {
+            "hashes": [
+                "sha256:a6ecc02377ac5ee9d65a6a8ad45c9ff1dac8ccee19400a5950fb51d594214ca5"
+            ],
+            "version": "==1.0.2"
         }
     },
     "develop": {

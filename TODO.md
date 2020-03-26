@@ -8,3 +8,14 @@ confirm basic operations
 
 - [ ] use ptflow lib to persist chain entries
 - [ ] use octoe state machine to generate random events
+
+- [ ] adapt shovel to use aio python
+
+NOTES
+-----
+
+- [ ] https://github.com/ipfs/go-ipfs/blob/master/docs/add-code-flow.md
+
+* can we make MFS read directly from Factomd DB?
+  * https://github.com/hanwen/go-fuse
+   

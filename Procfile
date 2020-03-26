@@ -1,4 +1,3 @@
-factomd: ./factomd --network=LOCAL --enablelivefeedapi --eventformat=json
+factom: python -m factom_sim.run
 shovel: python ./shovel/listener.py
-wallet: ./factom-walletd
-generator: watch -n 1 python test_write.py
+generator: sleep 5 ; watch -n 1 python test_write.py

@@ -2,6 +2,7 @@ import logging
 import logstash
 import sys
 
+# FIXME: set to docker hostname or use ENV var
 host = 'localhost'
 
 _logger = logging.getLogger('python-logstash-logger')

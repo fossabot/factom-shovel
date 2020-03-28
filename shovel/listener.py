@@ -1,4 +1,3 @@
-#!/usr/bin/env python
 """
 A shovel for reading events from factom
 """
@@ -11,7 +10,7 @@ import struct
 import time
 import traceback
 from math import ceil
-import log
+from shovel import log
 
 MAX_PARCEL_SIZE = 1000000
 
@@ -106,10 +105,3 @@ def event_loop(handler):
             time.sleep(5)
         except KeyboardInterrupt:
             break
-
-def push_to_logstash(task_type, payload):
-    """ foward data to logstash """
-    log.info(task_type, extra=payload)
-
-if __name__ == "__main__":
-    event_loop(push_to_logstash)

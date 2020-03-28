@@ -5,6 +5,7 @@ verify_ssl = true
 
 [dev-packages]
 honcho = "*"
+autopep8 = "*"
 
 [packages]
 psycopg2-binary = "*"
@@ -13,6 +14,7 @@ py-factom-did = {editable = true,git = "https://github.com/stackdump/py-factom-d
 factom-sim = {editable = true,git = "https://github.com/stackdump/factom-sim.git",ref = "master"}
 ptflow = {editable = true,git = "https://github.com/stackdump/ptflow.git"}
 ipfshttpclient = "*"
+python-logstash = "*"
 
 [requires]
 python_version = "3.7"

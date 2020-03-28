@@ -17,8 +17,6 @@ services:
   factomd:
     container_name: factomd
     image: factominc/factomd:v6.6.0
-    depends_on:
-      - shovel
     expose:
       - "8088"
       - "8110"
@@ -34,22 +32,6 @@ services:
     command: --blktime=15 --network=LOCAL --enablelivefeedapi --eventformat=json
     networks:
       pnet: {}
-#shovel:
-#  image: stackdump/factom-shovel:latest
-#  build:
-#    context: .
-#    dockerfile: ./Dockerfile
-#  hostname: shovel
-#  ports:
-#    - "8040:8040"
-#  networks:
-#    pnet: {}
-#  environment:
-#    POSTGRES_USER: pflow
-#    POSTGRES_PASSWORD: pflow
-#    POSTGRES_DB: pflow
-#    PYTHONDEBUG: 1
-#    FACTOMD_ENDPOINT: http://factomd:8088
   pgsql:
     image: postgres:11
     depends_on:

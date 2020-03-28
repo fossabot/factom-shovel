@@ -1,0 +1,64 @@
+version: "2"
+
+services:
+    elasticsearch:
+        container_name: elasticsearch
+        build:
+            context: elasticsearch/
+        volumes:
+            - ./elasticsearch/config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml:ro
+        expose:
+            - "9200"
+            - "9300"
+        environment:
+            ES_JAVA_OPTS: "-Xmx256m -Xms256m"
+        networks:
+            - elk
+
+    logstash:
+        container_name: logstash
+        build:
+            context: logstash/
+        volumes:
+            - ./logstash/config/logstash.yml:/usr/share/logstash/config/logstash.yml:ro
+            - ./logstash/pipeline:/usr/share/logstash/pipeline:ro
+        expose:
+            - "5000"
+            - "9600"
+            - "8345"
+        ports:
+            - "5000:5000"
+            - "9600:9600"
+            - "8345:8345"
+        environment:
+            LS_JAVA_OPTS: "-Xmx256m -Xms256m"
+        networks:
+            - elk
+            - factomd
+        depends_on:
+            - elasticsearch
+
+    kibana:
+        container_name: kibana
+        build:
+            context: kibana/
+        volumes:
+            - ./kibana/config/:/usr/share/kibana/config:ro
+        ports:
+            - "5601:5601"
+        networks:
+            - elk
+        depends_on:
+            - elasticsearch
+
+networks:
+    factomd:
+        driver: bridge
+        ipam:
+            driver: default
+            config:
+                - subnet: 10.7.0.0/16
+                  gateway: 10.7.1.1
+                  ip_range: 10.7.1.0/24
+    elk:
+        driver: bridge

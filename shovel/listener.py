@@ -11,25 +11,9 @@ import struct
 import time
 import traceback
 from math import ceil
+import log
 
 MAX_PARCEL_SIZE = 1000000
-
-log_level = os.environ.get("LOG_LEVEL", "info")
-log_levels = {
-    "debug": logging.DEBUG,
-    "info": logging.INFO,
-    "warning": logging.WARNING,
-    "error": logging.ERROR,
-    "critical": logging.CRITICAL,
-}
-
-if log_level.lower() not in log_levels:
-    # logging.critical(f"Invalid LOG_LEVEL set: {log_level}")
-    import sys
-    sys.exit(-1)
-
-logger = logging.getLogger()
-logger.setLevel(log_levels[log_level.lower()])
 
 live_feed_host = os.environ.get("LIVE_FEED_HOST", "127.0.0.1")
 live_feed_port = int(os.environ.get("LIVE_FEED_PORT", 8040))
@@ -50,10 +34,10 @@ def main():
     with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
         s.bind((live_feed_host, live_feed_port))
         s.listen(1)
-        #logging.info("Listening for LiveFeed connection...")
+        log.info("Listening for LiveFeed connection...")
         conn, address = s.accept()
         with conn:
-            # logging.info(f"Connected to LiveFeedAPI: {address}")
+            log.info(f"Connected to LiveFeedAPI: {address}")
             while True:
                 protocol_version = conn.recv(1)
                 if not protocol_version:
@@ -76,7 +60,7 @@ def shovel(data: bytes):
             raise ValueError(
                 'JSON input data must contain a root level "Event" element')
     except ValueError as e:
-        # logging.error(f"Bad shovel input: {e}")
+        log.error(f"Bad shovel input: {e}")
         print(e)
         return
 
@@ -112,9 +96,7 @@ def process(task_type: str, payload: dict):
         print(task_type, json.dumps(payload, indent=4))
 
 def event_loop(handler):
-    """
-    listen for and process events - loops forever
-    """
+    """ listen for and process events - loops forever """
     global _HANDLER
     _HANDLER = handler
     while True:
@@ -125,5 +107,9 @@ def event_loop(handler):
         except KeyboardInterrupt:
             break
 
+def push_to_logstash(task_type, payload):
+    """ foward data to logstash """
+    log.info(task_type, extra=payload)
+
 if __name__ == "__main__":
-    event_loop(None)
+    event_loop(push_to_logstash)

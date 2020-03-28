@@ -1,21 +1,17 @@
 WIP
 ---
 
-confirm basic operations
-
-- [ ] stand up shovel and then generate transactions
-- [ ] observe new commit events showing up in live feed
-
-- [ ] use ptflow lib to persist chain entries
-- [ ] use octoe state machine to generate random events
-
-- [ ] adapt shovel to use aio python
-
-NOTES
------
-
-- [ ] https://github.com/ipfs/go-ipfs/blob/master/docs/add-code-flow.md
-
-* can we make MFS read directly from Factomd DB?
+* Can we make MFS read directly from Factomd DB?
   * https://github.com/hanwen/go-fuse
-   
+
+* ? do we keep data stored base64 encoded ?
+
+BACKLOG
+-------
+- [ ] adapt shovel to output a json doc suitable for IPFS
+- [ ] push data to ipfs https://github.com/ipfs/go-ipfs/blob/master/docs/add-code-flow.md
+                                                                          
+DONE
+----
+- [x] pipe live feed to ELK stack
+

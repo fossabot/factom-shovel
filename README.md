@@ -7,7 +7,7 @@ https://factomize.com/forums/threads/matt-york-1-ipfs-bridge.3419/
 
 ## Status
 
-Planning & Protyping.
+Planning & Prototyping.
 
 **under construction**
 
@@ -21,7 +21,7 @@ Many current mechanisms to store data for DAPPs make use of IPFS.
 
 Factom is an ideal platform to store and serve 'pinned' data.
 
-Paying for entry storage on the Factom Protocol is a price-fixed at $0.001 per-kb.
+Paying for entry storage on the Factom Protocol is price-fixed at $0.001 per-kb.
 
 Using this basic mechanism to provide permanance and anchoring to IPFS based services
 extends the reach and utility of the Factom Protocol.
@@ -59,5 +59,6 @@ honcho start
   * https://github.com/hanwen/go-fuse
   * https://docs.ipfs.io/reference/api/cli/#ipfs-add
 
-* what are other good targets to shovel data?
-  * RabbitMQ, kafka
+* What are other good targets to shovel data?
+  * rabbitMQ, kafka
+  * added logstash - this may be the best avenue to tap into existing tools

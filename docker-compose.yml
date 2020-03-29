@@ -32,22 +32,19 @@ services:
     command: --blktime=15 --network=LOCAL --enablelivefeedapi --eventformat=json
     networks:
       pnet: {}
-  pgsql:
-    image: postgres:11
-    depends_on:
-      - factomd
-      - walletd
-    hostname: pgsql
+  shovel:
+    container_name: shovel
+    build: ./
+    #image: factom-shovel:latest
+    expose:
+      - "8040"
     ports:
-      - "5432:5432"
+      - "8040:8040"
+    volumes: []
+    environment:
+      LOGSTASH_URL: 'localhost:8345'
     networks:
       pnet: {}
-    environment:
-      POSTGRES_USER: pflow
-      POSTGRES_PASSWORD: pflow
-      POSTGRES_DB: pflow
-      PYTHONDEBUG: 1
-      FACTOMD_ENDPOINT: http://factomd:8088
 
 networks:
     pnet:

@@ -1,6 +1,7 @@
 # Factom-Shovel
 
 Build bridges between distributed event streams with Factom Live Feed Api.
+
 Work sponsored by a grant from the Factom Protocol:
 
 https://factomize.com/forums/threads/matt-york-1-ipfs-bridge.3419/

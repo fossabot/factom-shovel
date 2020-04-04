@@ -1,5 +1,6 @@
 """
 A shovel for reading events from factom
+and pushing into another system
 """
 import json
 import logging
@@ -79,9 +80,8 @@ def shovel(data: bytes):
     elif live_feed_event_type == LIVE_FEED_TYPE_ENTRY_REVEAL:
         task_type = "EntryReveal"
     else:
-        return
+        task_type = "Default"
 
-    # TODO: figure out how to route data ? do we filter by chain?
     process(task_type, event_data)
 
 

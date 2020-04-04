@@ -9,4 +9,4 @@ RUN pip3 install -e /opt/factom-shovel
 ENTRYPOINT ["/usr/bin/python3"]
 
 EXPOSE 8040
-CMD ["python", "-m", "shovel.adapter.logstash"]
+CMD ["python", "-m", "shovel.run"]

@@ -4,11 +4,10 @@ url = "https://pypi.org/simple"
 verify_ssl = true
 
 [dev-packages]
-honcho = "*"
 autopep8 = "*"
-factom-api = {editable = true,git = "https://github.com/FactomProject/factom-api.git",ref = "master"}
 
 [packages]
+factom-api = {editable = true,git = "https://github.com/FactomProject/factom-api.git",ref = "master"}
 ipfshttpclient = "*"
 python-logstash = "*"
 

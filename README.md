@@ -1,4 +1,6 @@
 # Factom-Shovel
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fstackdump%2Ffactom-shovel.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Fstackdump%2Ffactom-shovel?ref=badge_shield)
+
 
 Build bridges between distributed event streams with Factom Live Feed Api.
 
@@ -69,3 +71,7 @@ honcho start
 * What are other good targets to shovel data?
   * rabbitMQ, kafka
   * added logstash - this may be the best avenue to tap into existing tools
+
+
+## License
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fstackdump%2Ffactom-shovel.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2Fstackdump%2Ffactom-shovel?ref=badge_large)
